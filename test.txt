@@ -1,0 +1,27 @@
+
+/rest/v1/hpayment
+
+curl -X POST --basic --user  94653904.api.hipay-tpp.com:afmEKiT0u6xbM2vmQ2IG5Ufp -d "orderid=1510261733530003&operation=Authorization&eci=7&authentication_indicator=0&payment_product_list=cb&template=basic-js&display_selector=1&multi_use=1&accept_url=http://demo.pay.spie.ievep.net/payment/hipay/notify&decline_url=http://demo.pay.spie.ievep.net/payment/hipay/notify&pending_url=http://demo.pay.spie.ievep.net/payment/hipay/notify&exception_url=http://demo.pay.spie.ievep.net/payment/hipay/notify&cancel_url=http://demo.pay.spie.ievep.net/payment/hipay/notify&cdata1=http://5.10.70.179:8083/enrollment-portal/customer-account/callback &merchant_display_name=SPIE&description=anonymous credit card check.&currency=EUR&amount=0.01&cid=customerId&ipaddr=9.181.131.57&language=fr_FR&email=customerId@spie.com&firstname=YOANN&lastname=BRIEUX&streetaddress=Shanghai&city=Shanghai&zipcode=200230&country=FR"  https://stage-secure-gateway.hipay-tpp.com/rest/v1/hpayment
+
+/rest/v1/order
+
+curl -X POST -H  "Accept: application/json" --basic --user  94653904.api.hipay-tpp.com:afmEKiT0u6xbM2vmQ2IG5Ufp -d  "orderid=B1710261706550010&operation=Authorization&eci=9&authentication_indicator=0&payment_product=cb&description=diskc&currency=EUR&amount=0.1&cid=customer1d&ipaddr=9.186.159.142&language=fr_FR&cardtoken=f39bfab2b6c96fa30dcc0e55aa3da4125a49ab03"  https://stage-secure-gateway.hipay-tpp.com/rest/v1/order
+
+sepa
+/rest/v1/hpayment
+
+curl -X POST --basic --user  94653904.api.hipay-tpp.com:afmEKiT0u6xbM2vmQ2IG5Ufp -d "orderid=1510261733530003&operation=Sale&eci=7&authentication_indicator=1&payment_product_list=sdd&template=basic-js&display_selector=1&multi_use=1&accept_url=http://demo.pay.spie.ievep.net/payment/hipay/notify&decline_url=http://demo.pay.spie.ievep.net/payment/hipay/notify&pending_url=http://demo.pay.spie.ievep.net/payment/hipay/notify&exception_url=http://demo.pay.spie.ievep.net/payment/hipay/notify&cancel_url=http://demo.pay.spie.ievep.net/payment/hipay/notify&cdata1=http://5.10.70.179:8083/enrollment-portal/customer-account/callback &merchant_display_name=SPIE&description=anonymous credit card check.&currency=EUR&amount=1.00&cid=customerId&ipaddr=9.181.131.57&language=fr_FR&email=customerId@spie.com&firstname=YOANN&lastname=BRIEUX&streetaddress=Shanghai&city=Shanghai&zipcode=200230&country=FR&recurring_payment=1"  https://stage-secure-gateway.hipay-tpp.com/rest/v1/hpayment
+
+
+/rest/v1/transaction
+
+curl -X GET --basic --user  94653904.api.hipay-tpp.com:afmEKiT0u6xbM2vmQ2IG5Ufp   https://stage-secure-gateway.hipay-tpp.com/rest/v1/transaction/134358381849 
+
+production
+
+curl -X GET -H  "Accept: application/json" --basic --user  94654855.api.hipay-tpp.com:1g5YkgsnQP6zcWOpqB1MnSaW   https://secure-gateway.hipay-tpp.com/rest/v1/transaction/57752628e4bf6196 
+curl -X GET -H  "Accept: application/json" --basic --user  94654855.api.hipay-tpp.com:1g5YkgsnQP6zcWOpqB1MnSaW   https://secure-gateway.hipay-tpp.com/rest/v1/transaction?orderid=
+
+curl -X GET -H  "Accept: application/json" --basic --user  94654855.api.hipay-tpp.com:1g5YkgsnQP6zcWOpqB1MnSaW   https://api.hipay-tpp.com/v1/settlement/229373/raw.csv
+ 
+ 
