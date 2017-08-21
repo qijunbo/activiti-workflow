@@ -19,8 +19,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-import com.example.activiti.ActivitiDemo;
-
 @Configuration
 public class AppConfig {
 
@@ -104,11 +102,6 @@ public class AppConfig {
 	@Bean
 	public FormService createFormService(ProcessEngine processEngine) {
 		return processEngine.getFormService();
-	}
-
-	@Bean
-	public ActivitiDemo demo() {
-		return new ActivitiDemo();
 	}
 
 }

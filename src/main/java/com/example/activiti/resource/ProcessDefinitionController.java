@@ -2,15 +2,10 @@ package com.example.activiti.resource;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringBufferInputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
 
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.repository.ProcessDefinition;
@@ -36,7 +31,7 @@ public class ProcessDefinitionController {
 	@RequestMapping(value = "/{id}", method = GET)
 	public @ResponseBody ProcessDefinition getProcessDefinition(@PathVariable String id) {
 
-		return EntityFactory.createProcessDefinition(
+		return EntityFactory.convertProcessDefinition(
 				repositoryService.createProcessDefinitionQuery().deploymentId(id).singleResult());
 	}
 
@@ -44,7 +39,7 @@ public class ProcessDefinitionController {
 	public @ResponseBody Iterable<ProcessDefinition> getProcessDefinition() {
 		List<ProcessDefinition> list = new ArrayList<>();
 		repositoryService.createProcessDefinitionQuery().list()
-				.forEach(p -> list.add(EntityFactory.createProcessDefinition(p)));
+				.forEach(p -> list.add(EntityFactory.convertProcessDefinition(p)));
 		return list;
 	}
 
@@ -62,7 +57,7 @@ public class ProcessDefinitionController {
 		 		break;
 		 	}
 		}
-		 
+		
 		return creat (imgbuffer);
 		 
 	}

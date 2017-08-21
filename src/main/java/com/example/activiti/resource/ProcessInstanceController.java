@@ -28,7 +28,7 @@ public class ProcessInstanceController {
 
 		List<ProcessInstance> list = new ArrayList<>();
 		runtimeService.createProcessInstanceQuery().processDefinitionKey(key).list()
-				.forEach(p -> list.add(EntityFactory.createProcessInstance(p)));
+				.forEach(p -> list.add(EntityFactory.convertProcessInstance(p)));
 		return list;
 	}
 
@@ -36,7 +36,7 @@ public class ProcessInstanceController {
 	public @ResponseBody Iterable<ProcessInstance> getProcessInstance() {
 		List<ProcessInstance> list = new ArrayList<>();
 		runtimeService.createProcessInstanceQuery().list()
-				.forEach(p -> list.add(EntityFactory.createProcessInstance(p)));
+				.forEach(p -> list.add(EntityFactory.convertProcessInstance(p)));
 		return list;
 	}
 

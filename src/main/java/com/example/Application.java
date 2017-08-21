@@ -1,7 +1,10 @@
 package com.example;
 
 import java.util.Date;
+import java.util.List;
 
+import org.activiti.engine.TaskService;
+import org.activiti.engine.task.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +13,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.example.activiti.ActivitiDemo;
 import com.example.jpa.repository.Customer;
 import com.example.jpa.repository.CustomerRepository;
 
@@ -19,8 +21,7 @@ public class Application {
 
 	private static final Logger log = LoggerFactory.getLogger(Application.class);
 
-	@Autowired
-	public ActivitiDemo  demo;
+ 
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class);
@@ -48,10 +49,30 @@ public class Application {
 		};
 	}
 
+	@Autowired
+	private TaskService taskService;
+
+	
 	@Bean
 	public CommandLineRunner activitiDemo( ) {
 		return (args) -> {
-			demo.demo();
+			taskService.createTaskQuery().list();
+			while (true) {
+				List<Task> tasks = taskService.createTaskQuery().taskCandidateGroup("managers").list();
+				System.out.println("Active outstanding tasks: [" + tasks.size() + "]");
+				for (int i = 0; i < tasks.size(); i++) {
+					Task task = tasks.get(i);
+					System.out.println("Processing Task [" + task.getName() + "]");
+
+				}
+
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		};
 	}
 

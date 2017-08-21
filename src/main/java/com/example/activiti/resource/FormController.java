@@ -24,7 +24,7 @@ public class FormController {
 	 */
 	@RequestMapping(value = "/task/{id}", method = GET)
 	public @ResponseBody FormData getTaskOfGroup(@PathVariable String id) {
-		return EntityFactory.createFormData(formService.getTaskFormData(id));
+		return EntityFactory.convertFormData(formService.getTaskFormData(id));
 	}
 
 }

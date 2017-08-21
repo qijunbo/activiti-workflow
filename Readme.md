@@ -1,7 +1,7 @@
 
 启动本应用后, 控制台有个监控程序, 不停的输出log, 看看当前有什么任务卡住了.  用这个可以来看执行的效果.
 
-1. 第一件事情, 部署一个工作流 
+第一件事情, 部署一个工作流 
 ---
 DeploymentController
 
@@ -26,7 +26,7 @@ GET
 http://localhost/deployment/
 返回所有, (看来返回的也真是没啥有用的东西.)
 
-2.   ProcessDefinitionController
+ProcessDefinitionController
 ---
 GET
 http://localhost/processDefinition/1
@@ -46,7 +46,7 @@ http://localhost/processDefinition/1
 "diagramResourceName": "onboarding.onboarding.png"
 }
 ```
-3. 启动一个工作流 ProcessInstanceController
+启动一个工作流 ProcessInstanceController
 ---
 POST
 http://localhost/processInstance/onboarding
@@ -81,18 +81,18 @@ http://localhost/processInstance/onboarding
 }
 ```
 
+用户和组的管理
+---
 用 IdentityController  这个可以查看用户 和 组.
 传入上面消息里面的 processDefinitionId 
 
 GET
-
-http://localhost/group/onboarding:1:4
-http://localhost/user/onboarding:1:4
-
-啥都没有返回,  我肯定上当了, MLGB的.
+http://localhost/group/proc/onboarding:1:4
+http://localhost/user/proc/onboarding:1:4
 
 
-4. TaskController  获得可执行的任务.
+
+TaskController  获得可执行的任务.
 ---
 
 GET
@@ -124,12 +124,12 @@ http://localhost/task/group/managers
 }
 ```
 
-POST
+PATCH
 http://localhost/task/2505
 这个是用来完成当前任务,  id我是从上面的消息里找到了, 可是报文格式怎么办呢?
 请看下节:
 
-5. FormController  获取指定任务的表单样式
+FormController  获取指定任务的表单样式
 ---
 GET
 http://localhost/form/task/2505
@@ -187,7 +187,7 @@ http://localhost/task/2505
 
 **这时候,你会发现控制台有新任务了.**
 
-6.  重新回去看任务. TaskController
+重新回去看任务. TaskController
 ---
 GET
 http://localhost/task/group/managers
@@ -261,7 +261,7 @@ http://localhost/task/2511
 
 
 
-7. 查看历史 ,  党经常教育某岛国人民要尊重历史, 我们来看看
+查看历史 ,  党经常教育某岛国人民要尊重历史, 我们来看看
 ---
 
 GET

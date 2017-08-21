@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.activiti.engine.IdentityService;
 import org.activiti.engine.form.FormData;
 import org.activiti.engine.form.FormProperty;
 import org.activiti.engine.history.HistoricActivityInstance;
@@ -17,7 +18,23 @@ import org.activiti.engine.task.Task;
 
 public class EntityFactory {
 
-	public static User createUser(User entiy) {
+	public static User createUser(IdentityService service, User user) {
+		User userEntity = service.newUser(user.getId());
+		userEntity.setFirstName(user.getFirstName());
+		userEntity.setLastName(user.getLastName());
+		userEntity.setEmail(user.getEmail());
+		userEntity.setPassword(user.getPassword());
+		return userEntity;
+	}
+
+	public static Group createGroup(IdentityService service, Group group) {
+		Group groupEntity = service.newGroup(group.getId());
+		groupEntity.setName(group.getName());
+		groupEntity.setType(group.getType());
+		return groupEntity;
+	}
+
+	public static User convertUser(User entiy) {
 
 		return new User() {
 
@@ -86,7 +103,7 @@ public class EntityFactory {
 
 	}
 
-	public static Group createGroup(Group entity) {
+	public static Group convertGroup(Group entity) {
 		return new Group() {
 
 			@Override
@@ -126,7 +143,7 @@ public class EntityFactory {
 		};
 	}
 
-	public static HistoricActivityInstance createHistoricActivityInstance(HistoricActivityInstance entity) {
+	public static HistoricActivityInstance convertHistoricActivityInstance(HistoricActivityInstance entity) {
 
 		return new HistoricActivityInstance() {
 
@@ -209,7 +226,7 @@ public class EntityFactory {
 		};
 	}
 
-	public static ProcessDefinition createProcessDefinition(final ProcessDefinition entiy) {
+	public static ProcessDefinition convertProcessDefinition(final ProcessDefinition entiy) {
 
 		return new ProcessDefinition() {
 
@@ -283,7 +300,7 @@ public class EntityFactory {
 		};
 	}
 
-	public static FormData createFormData(FormData form) {
+	public static FormData convertFormData(FormData form) {
 		return new FormData() {
 
 			@Override
@@ -306,7 +323,7 @@ public class EntityFactory {
 		};
 	}
 
-	public static ProcessInstance createProcessInstance(final ProcessInstance entiy) {
+	public static ProcessInstance convertProcessInstance(final ProcessInstance entiy) {
 		return new ProcessInstance() {
 
 			@Override
@@ -408,7 +425,7 @@ public class EntityFactory {
 		};
 	}
 
-	public static Task createTask(final Task entity) {
+	public static Task convertTask(final Task entity) {
 
 		return new Task() {
 
@@ -607,7 +624,7 @@ public class EntityFactory {
 		};
 	}
 
-	public static Deployment createDeployment(final Deployment entity) {
+	public static Deployment convertDeployment(final Deployment entity) {
 
 		return new Deployment() {
 

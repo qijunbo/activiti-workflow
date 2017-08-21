@@ -25,14 +25,13 @@ public class DeploymentController {
 
 	@RequestMapping(value = "/{id}", method = GET)
 	public @ResponseBody Deployment getTaskOfGroup(@PathVariable String id) {
-		return EntityFactory
-				.createDeployment(repositoryService.createDeploymentQuery().deploymentId(id).singleResult());
+		return EntityFactory.convertDeployment(repositoryService.createDeploymentQuery().deploymentId(id).singleResult());
 	}
 
 	@RequestMapping(method = GET)
 	public @ResponseBody Iterable<Deployment> getDeployment() {
 		List<Deployment> list = new ArrayList<>();
-		repositoryService.createDeploymentQuery().list().forEach(d -> list.add(EntityFactory.createDeployment(d)));
+		repositoryService.createDeploymentQuery().list().forEach(d -> list.add(EntityFactory.convertDeployment(d)));
 		return list;
 	}
 
