@@ -23,5 +23,31 @@ curl -X GET -H  "Accept: application/json" --basic --user  94654855.api.hipay-tp
 curl -X GET -H  "Accept: application/json" --basic --user  94654855.api.hipay-tpp.com:1g5YkgsnQP6zcWOpqB1MnSaW   https://secure-gateway.hipay-tpp.com/rest/v1/transaction?orderid=
 
 curl -X GET -H  "Accept: application/json" --basic --user  94654855.api.hipay-tpp.com:1g5YkgsnQP6zcWOpqB1MnSaW   https://api.hipay-tpp.com/v1/settlement/229373/raw.csv
+
+#!/bin/sh 
+host=192.168.2.65
+if [  -n "${$1}" ]; then 
+   host=$1 ;
+fi
+
  
+curl -X GET   http://${host}/deployment/
+
+curl -X POST  http://${host}/processInstance/onboarding
+
+curl -X GET  http://${host}/task/group/managers
+echo
+taskid=100
+echo  =========
+echo  plese input taksid: 
+read  taskid
+curl -X PATCH -H  "Accept: application/json"  -d '{"fullName":"tony","yearsOfExperience":12,}'  http://${host}/task/${taskid}
+
+curl -X GET  http://${host}/task/group/managers
+echo  
+echo  plese input taksid: 
+read  taskid
+curl -X PATCH -H  "Accept: application/json"  -d '{"personalWelcomeTime":"2/14/17"}'  http://${host}/task/${taskid}
+
+
  

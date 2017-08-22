@@ -175,7 +175,7 @@ http://localhost/form/task/2505
 }
 ```
 
-POST
+PATCH
 http://localhost/task/2505
 ```
 {
@@ -248,7 +248,7 @@ http://localhost/form/task/2511
 
 再完成任务吧:
 
-POST
+PATCH
 http://localhost/task/2511
 ```
 {
