@@ -8,6 +8,8 @@ import org.activiti.engine.IdentityService;
 import org.activiti.engine.form.FormData;
 import org.activiti.engine.form.FormProperty;
 import org.activiti.engine.history.HistoricActivityInstance;
+import org.activiti.engine.history.HistoricProcessInstance;
+import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.identity.Group;
 import org.activiti.engine.identity.User;
 import org.activiti.engine.repository.Deployment;
@@ -32,6 +34,264 @@ public class EntityFactory {
 		groupEntity.setName(group.getName());
 		groupEntity.setType(group.getType());
 		return groupEntity;
+	}
+
+	public static HistoricTaskInstance convertHistoricTaskInstance(HistoricTaskInstance entity) {
+
+		return new HistoricTaskInstance() {
+
+			@Override
+			public String getId() {
+
+				return entity.getId();
+			}
+
+			@Override
+			public String getName() {
+				return entity.getName();
+			}
+
+			@Override
+			public String getDescription() {
+				return entity.getDescription();
+			}
+
+			@Override
+			public int getPriority() {
+				return entity.getPriority();
+			}
+
+			@Override
+			public String getOwner() {
+				return entity.getOwner();
+			}
+
+			@Override
+			public String getAssignee() {
+				return entity.getAssignee();
+			}
+
+			@Override
+			public String getProcessInstanceId() {
+				return entity.getProcessInstanceId();
+			}
+
+			@Override
+			public String getExecutionId() {
+				return entity.getExecutionId();
+			}
+
+			@Override
+			public String getProcessDefinitionId() {
+				return entity.getProcessDefinitionId();
+			}
+
+			@Override
+			public Date getCreateTime() {
+				return entity.getCreateTime();
+			}
+
+			@Override
+			public String getTaskDefinitionKey() {
+				return entity.getTaskDefinitionKey();
+			}
+
+			@Override
+			public Date getDueDate() {
+				return entity.getDueDate();
+			}
+
+			@Override
+			public String getCategory() {
+				return entity.getCategory();
+			}
+
+			@Override
+			public String getParentTaskId() {
+				return entity.getParentTaskId();
+			}
+
+			@Override
+			public String getTenantId() {
+				return entity.getTenantId();
+			}
+
+			@Override
+			public String getFormKey() {
+				return entity.getFormKey();
+			}
+
+			@Override
+			public Map<String, Object> getTaskLocalVariables() {
+				return entity.getTaskLocalVariables();
+			}
+
+			@Override
+			public Map<String, Object> getProcessVariables() {
+				return entity.getProcessVariables();
+			}
+
+			@Override
+			public Date getTime() {
+				return entity.getTime();
+			}
+
+			@Override
+			public String getDeleteReason() {
+				return entity.getDeleteReason();
+			}
+
+			@Override
+			public Date getStartTime() {
+				return entity.getStartTime();
+			}
+
+			@Override
+			public Date getEndTime() {
+				return entity.getEndTime();
+			}
+
+			@Override
+			public Long getDurationInMillis() {
+				return entity.getDurationInMillis();
+			}
+
+			@Override
+			public Long getWorkTimeInMillis() {
+				return entity.getWorkTimeInMillis();
+			}
+
+			@Override
+			public Date getClaimTime() {
+				return entity.getClaimTime();
+			}
+
+			@Override
+			public void setLocalizedName(String name) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void setLocalizedDescription(String description) {
+				// TODO Auto-generated method stub
+
+			}
+
+		};
+
+	}
+
+	public static HistoricProcessInstance convertHistoricProcessInstance(HistoricProcessInstance entity) {
+		return new HistoricProcessInstance() {
+
+			@Override
+			public String getId() {
+				return entity.getId();
+			}
+
+			@Override
+			public String getBusinessKey() {
+				return entity.getBusinessKey();
+			}
+
+			@Override
+			public String getProcessDefinitionId() {
+				return entity.getProcessDefinitionId();
+			}
+
+			@Override
+			public String getProcessDefinitionName() {
+				return entity.getProcessDefinitionKey();
+			}
+
+			@Override
+			public String getProcessDefinitionKey() {
+				return entity.getProcessDefinitionName();
+			}
+
+			@Override
+			public Integer getProcessDefinitionVersion() {
+				return entity.getProcessDefinitionVersion();
+			}
+
+			@Override
+			public String getDeploymentId() {
+				return entity.getDeploymentId();
+			}
+
+			@Override
+			public Date getStartTime() {
+				return entity.getStartTime();
+			}
+
+			@Override
+			public Date getEndTime() {
+				return entity.getEndTime();
+			}
+
+			@Override
+			public Long getDurationInMillis() {
+				return entity.getDurationInMillis();
+			}
+
+			@Override
+			public String getEndActivityId() {
+				return entity.getEndActivityId();
+			}
+
+			@Override
+			public String getStartUserId() {
+				return entity.getStartUserId();
+			}
+
+			@Override
+			public String getStartActivityId() {
+				return entity.getStartActivityId();
+			}
+
+			@Override
+			public String getDeleteReason() {
+				return entity.getDeleteReason();
+			}
+
+			@Override
+			public String getSuperProcessInstanceId() {
+				return entity.getSuperProcessInstanceId();
+			}
+
+			@Override
+			public String getTenantId() {
+				return entity.getTenantId();
+			}
+
+			@Override
+			public String getName() {
+				return entity.getName();
+			}
+
+			@Override
+			public String getDescription() {
+				return entity.getDescription();
+			}
+
+			@Override
+			public void setLocalizedName(String name) {
+
+			}
+
+			@Override
+			public void setLocalizedDescription(String description) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public Map<String, Object> getProcessVariables() {
+				return entity.getProcessVariables();
+			}
+
+		};
 	}
 
 	public static User convertUser(User entiy) {
