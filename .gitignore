@@ -4,3 +4,7 @@ bin/
 .project
 .classpath
 build/
+out/
+activiti-workflow.iws
+activiti-workflow.ipr
+activiti-workflow.iml
