@@ -6,6 +6,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.activiti.engine.ProcessEngineConfiguration;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.repository.Deployment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class DeploymentController {
 
 	@Autowired
 	private RepositoryService repositoryService;
+	
+	@Autowired
+	private ProcessEngineConfiguration  configuration;
 
 	@RequestMapping(value = "/{id}", method = GET)
 	public @ResponseBody Deployment getTaskOfGroup(@PathVariable String id) {
@@ -30,6 +34,9 @@ public class DeploymentController {
 
 	@RequestMapping(method = GET)
 	public @ResponseBody Iterable<Deployment> getDeployment() {
+		
+		System.out.println(configuration.getDatabaseSchemaUpdate());
+		
 		List<Deployment> list = new ArrayList<>();
 		repositoryService.createDeploymentQuery().list().forEach(d -> list.add(EntityFactory.convertDeployment(d)));
 		return list;

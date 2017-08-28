@@ -25,7 +25,7 @@ public class AppConfig {
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	@Bean
-	@ConfigurationProperties(prefix = "app.datasource")
+	@ConfigurationProperties(prefix = "h2.datasource")
 	public DataSource dataSource() {
 		return new DriverManagerDataSource();
 	}
@@ -37,7 +37,9 @@ public class AppConfig {
 	 * @return
 	 */
 	@Bean
-	@ConfigurationProperties(prefix = "mysql.activiti")
+	
+	// 如果你在两个地方设置属性, 最终两个地方都会生效. 数据源的配置最终会不一致, 你也不知道以哪个为准.
+	@ConfigurationProperties(prefix = "h2.activiti")
 	public ProcessEngineConfiguration processEngineConfiguration(DataSource dataSource) {
 		StandaloneProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration();
 		cfg.setDataSource(dataSource);
