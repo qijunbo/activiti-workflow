@@ -25,6 +25,7 @@ jar {
 repositories {
     maven { url 'http://maven.aliyun.com/nexus/content/repositories/central/' }
 	maven { url 'http://maven.ibiblio.org/maven2/' }
+	maven { url 'https://repo.spring.io/libs-snapshot/' }
 	maven { url 'http://maven.aliyun.com/nexus/content/repositories/public/' }
     maven { url 'http://maven.aliyun.com/nexus/content/repositories/central-m1/' }
     maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
